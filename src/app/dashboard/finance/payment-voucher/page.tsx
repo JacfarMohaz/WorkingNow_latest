@@ -98,17 +98,7 @@ export default function InvoiceManagementPage() {
   // Use mockVouchers for table
   const [invoices] = useState(mockVouchers);
 
-  // Filter invoices based on search and filters
-  const filteredInvoices = mockVouchers.filter((invoice) => {
-    const matchesSearch = 
-      invoice.paidTo.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      invoice.serialNumber.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      invoice.being.toLowerCase().includes(searchTerm.toLowerCase());
-    
-    const matchesStatus = statusFilter === "all" || invoice.status === statusFilter;
-    
-    return matchesSearch && matchesStatus;
-  });
+
 
   // Dropzone component
   function SignatureDropzone({ label, file, setFile }: { label: string, file: File | null, setFile: (f: File | null) => void }) {

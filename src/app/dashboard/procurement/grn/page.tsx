@@ -48,11 +48,7 @@ export default function GRNPage() {
     { id: "2", description: "", size: "", quantity: "", specifications: "" },
   ]);
   const [notes, setNotes] = useState("");
-  // Signature state for Received By and Verified By
-  const [receivedBy, setReceivedBy] = useState({
-    name: "Ahmed Hassan",
-    signature: null as File | null,
-  });
+  // Signature state for Verified By
   const [verifiedBy, setVerifiedBy] = useState({
     name: "Fatima Mohamed",
     signature: null as File | null,
@@ -278,13 +274,6 @@ export default function GRNPage() {
                 </div>
                 {/* Approval Section */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-4">
-                  <div className="space-y-4 p-4 border rounded-lg bg-muted/20">
-                    <label className="text-base font-semibold">Received By</label>
-                    <div className="flex flex-col gap-2 mt-2">
-                      <span className="text-base">Name: <span className="inline-block border-b border-black min-w-[140px] align-middle" style={{height: '1.5em'}}></span></span>
-                      <span className="text-base">Signature: <span className="inline-block border-b border-black min-w-[140px] align-middle" style={{height: '1.5em'}}></span></span>
-                    </div>
-                  </div>
                   <div className="space-y-4 p-4 border rounded-lg bg-muted/20">
                     <label className="text-base font-semibold">Checked By</label>
                     <input

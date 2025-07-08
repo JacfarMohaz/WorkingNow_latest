@@ -75,9 +75,11 @@ export default function Home() {
         </div>
         {/* Dashboard Screenshot */}
         <div className="relative max-w-5xl w-full flex justify-center">
-          <img 
+          <Image 
             src={isDark ? "/dashboard-preview-dark.png" : "/dashboard-preview-light.png"}
             alt="Dashboard Preview"
+            width={800}
+            height={480}
             className="rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 w-full h-auto object-cover"
             style={{ maxHeight: 480 }}
           />
