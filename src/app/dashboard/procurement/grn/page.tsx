@@ -3,15 +3,6 @@ import { useState, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogFooter, DialogClose } from "@/components/ui/dialog";
-import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from "@/components/ui/table";
-import { Textarea } from "@/components/ui/textarea";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Plus, Minus, Package, FileText, Calendar, User, Building, DollarSign, Eye, Edit, Trash2, CheckCircle, AlertCircle } from "lucide-react";
-import { SingleSignatureSection } from "@/components/ui/signature-section";
-import { SignatureUpload } from "@/components/ui/signature-upload";
 
 // Mock data for GRN table
 const mockGRNs = [
@@ -42,9 +33,6 @@ const ngoInfo = {
   email: "info@workingnow.org",
   phone: "+252 61 2345678",
 };
-
-// Type for SingleSignatureSection onUpdate when showStamp is false
-type SignatureUpdateField = 'name' | 'signature';
 
 export default function GRNPage() {
   const [open, setOpen] = useState(false);

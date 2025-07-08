@@ -4,9 +4,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Eye, Edit, Trash2, FileText, Download, Upload, CheckCircle, AlertCircle } from "lucide-react";
+import { Eye, Edit, Trash2, FileText, Download } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 
 // Mock data for reconciliation records
@@ -35,9 +34,6 @@ const mockReconciliations = [
 
 export default function BankReconciliationPage() {
   const [reconciliations, setReconciliations] = useState(mockReconciliations);
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [uploadedFile, setUploadedFile] = useState<File | null>(null);
-  const [uploadStatus, setUploadStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   const handleDownloadTemplate = () => {
     // Create a link element to trigger download
@@ -47,40 +43,6 @@ export default function BankReconciliationPage() {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-  };
-
-  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      // Accept all document types
-      setUploadedFile(file);
-      setUploadStatus('success');
-      
-      // Mock: Add a new reconciliation record
-      setTimeout(() => {
-        setReconciliations([
-          {
-            id: `BR-${Date.now()}`,
-            bankName: "Uploaded Bank",
-            accountNo: "UPLOAD-001",
-            statementDate: new Date().toISOString().split('T')[0],
-            journalDate: new Date().toISOString().split('T')[0],
-            balanceBank: 15000.0,
-            balanceJournal: 14800.0,
-            status: "Pending",
-          },
-          ...reconciliations,
-        ]);
-        setIsDialogOpen(false);
-        setUploadedFile(null);
-        setUploadStatus('idle');
-      }, 2000);
-    }
-  };
-
-  const resetUpload = () => {
-    setUploadedFile(null);
-    setUploadStatus('idle');
   };
 
   return (
@@ -145,7 +107,6 @@ export default function BankReconciliationPage() {
                 <Input
                   type="file"
                   accept=".xlsx,.xls,.pdf,.doc,.docx,.txt,.csv,.jpg,.jpeg,.png,.gif"
-                  onChange={handleFileUpload}
                   className="max-w-sm"
                   id="document-upload"
                 />
@@ -153,34 +114,6 @@ export default function BankReconciliationPage() {
                   📤 Upload your Bank Reconciliation Form and Bank Statement
                 </Label>
               </div>
-
-              {/* Upload Status */}
-              {uploadStatus === 'success' && (
-                <Alert className="border-green-200 bg-green-50 dark:border-green-800 dark:bg-green-950">
-                  <CheckCircle className="h-4 w-4 text-green-600" />
-                  <AlertDescription className="text-green-800 dark:text-green-200">
-                    File uploaded successfully! Processing your reconciliation...
-                  </AlertDescription>
-                </Alert>
-              )}
-
-              {uploadStatus === 'error' && (
-                <Alert className="border-red-200 bg-red-50 dark:border-red-800 dark:bg-red-950">
-                  <AlertCircle className="h-4 w-4 text-red-600" />
-                  <AlertDescription className="text-red-800 dark:text-red-200">
-                    Please upload a valid document file
-                  </AlertDescription>
-                </Alert>
-              )}
-
-              {uploadedFile && uploadStatus === 'idle' && (
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <span>Selected file: {uploadedFile.name}</span>
-                  <Button variant="ghost" size="sm" onClick={resetUpload}>
-                    Change
-                  </Button>
-                </div>
-              )}
             </div>
           </div>
 

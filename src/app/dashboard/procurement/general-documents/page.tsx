@@ -16,19 +16,14 @@ import {
   Edit, 
   Trash2, 
   FileText, 
-  Calendar, 
-  User, 
-  Upload,
-  Download,
-  File,
-  FileImage,
-  FilePdf,
-  FileSpreadsheet,
-  FileWord,
-  CheckCircle,
-  AlertCircle,
-  Clock,
-  ShoppingCart
+  File, 
+  FileImage, 
+  FileSpreadsheet, 
+  Download, 
+  ShoppingCart, 
+  CheckCircle, 
+  AlertCircle, 
+  Clock, 
 } from "lucide-react";
 
 type Document = {
@@ -126,9 +121,9 @@ const statusIcons = {
 };
 
 const fileTypeIcons = {
-  pdf: FilePdf,
+  pdf: FileText,
   xlsx: FileSpreadsheet,
-  docx: FileWord,
+  docx: FileText,
   jpg: FileImage,
   png: FileImage,
   zip: File,

@@ -89,23 +89,6 @@ export default function BidAnalysisPage() {
       return item;
     }));
   };
-  const updateBidItemDesc = (itemId: string, value: string) => {
-    setBidItems(bidItems.map(item => item.id === itemId ? { ...item, description: value } : item));
-  };
-  const addBidItem = () => {
-    const newId = (bidItems.length + 1).toString();
-    setBidItems([...bidItems, { id: newId, description: "", suppliers: [ { qty: "", unitPrice: "", total: "" }, { qty: "", unitPrice: "", total: "" }, { qty: "", unitPrice: "", total: "" } ] }]);
-  };
-  // Handlers for supplier names
-  const updateSupplierName = (idx: number, value: string) => {
-    setSupplierNames(supplierNames.map((name, i) => i === idx ? value : name));
-  };
-  // Handlers for committee
-  const updateCommittee = (idx: number, field: string, value: string) => {
-    setCommittee(committee.map((row, i) => i === idx ? { ...row, [field]: value } : row));
-  };
-  // Calculate totals for each supplier
-  const supplierTotals = [0, 0, 0].map((_, idx) => bidItems.reduce((sum, item) => sum + (parseFloat(item.suppliers[idx].total) || 0), 0));
 
   const handleDownloadTemplate = () => {
     const link = document.createElement('a');

@@ -163,9 +163,6 @@ export default function PurchaseRequisitionPage() {
     { id: "1", description: "A4 Paper (500 sheets)", quantity: "10", unitCost: "5", totalCost: "50", remark: "" },
     { id: "2", description: "Printer Ink Cartridge", quantity: "2", unitCost: "30", totalCost: "60", remark: "" },
   ]);
-  const [justification, setJustification] = useState("");
-  const [urgency, setUrgency] = useState("Normal");
-  const [budgetSource, setBudgetSource] = useState("");
   const [requestedBy, setRequestedBy] = useState({
     name: "Ali Hassan",
     signature: null as File | null,
@@ -239,14 +236,6 @@ export default function PurchaseRequisitionPage() {
 
   const handleApprovedByUpdate = (field: 'name' | 'signature', value: string | File | null) => {
     setApprovedBy({ ...approvedBy, [field]: value });
-  };
-
-  const handleRequestedByUpdateWrapper = (field: string, value: string | File | null) => {
-    if (field === 'name' || field === 'signature') handleRequestedByUpdate(field, value);
-  };
-
-  const handleApprovedByUpdateWrapper = (field: string, value: string | File | null) => {
-    if (field === 'name' || field === 'signature') handleApprovedByUpdate(field, value);
   };
 
   return (
@@ -429,12 +418,12 @@ export default function PurchaseRequisitionPage() {
                       placeholder="Enter name"
                       className="h-9 mb-2 w-full border rounded px-2"
                       value={requestedBy.name}
-                      onChange={e => handleRequestedByUpdateWrapper('name', e.target.value)}
+                      onChange={e => handleRequestedByUpdate('name', e.target.value)}
                     />
                     <SignatureUpload
                       label="Upload Signature"
                       value={requestedBy.signature}
-                      onChange={file => handleRequestedByUpdateWrapper('signature', file)}
+                      onChange={file => handleRequestedByUpdate('signature', file)}
                     />
                   </div>
                   <div className="space-y-4 p-4 border rounded-lg bg-muted/20">
@@ -443,12 +432,12 @@ export default function PurchaseRequisitionPage() {
                       placeholder="Enter name"
                       className="h-9 mb-2 w-full border rounded px-2"
                       value={approvedBy.name}
-                      onChange={e => handleApprovedByUpdateWrapper('name', e.target.value)}
+                      onChange={e => handleApprovedByUpdate('name', e.target.value)}
                     />
                     <SignatureUpload
                       label="Upload Signature"
                       value={approvedBy.signature}
-                      onChange={file => handleApprovedByUpdateWrapper('signature', file)}
+                      onChange={file => handleApprovedByUpdate('signature', file)}
                     />
                   </div>
                 </div>

@@ -23,7 +23,6 @@ import {
   Users,
   Filter,
   Download,
-  MoreHorizontal,
 } from "lucide-react";
 
 // Mock data for budget allocations

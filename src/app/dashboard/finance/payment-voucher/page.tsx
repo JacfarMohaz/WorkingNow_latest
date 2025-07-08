@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Textarea } from "@/components/ui/textarea";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import {
@@ -17,16 +17,10 @@ import {
   Trash2,
   DollarSign,
   FileText,
-  Calendar,
   Filter,
   Download,
   Send,
   Printer,
-  Clock,
-  CheckCircle,
-  XCircle,
-  AlertCircle,
-  Upload,
 } from "lucide-react";
 
 // Mock data for payment vouchers (matching modal fields)
@@ -112,31 +106,6 @@ export default function InvoiceManagementPage() {
     
     return matchesSearch && matchesStatus && matchesType;
   });
-
-  const getDaysUntilDue = (dueDate: string) => {
-    const today = new Date();
-    const due = new Date(dueDate);
-    const diffTime = due.getTime() - today.getTime();
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    return diffDays;
-  };
-
-  const getStatusIcon = (status: string) => {
-    switch (status) {
-      case "paid":
-        return <CheckCircle className="h-4 w-4 text-success" />;
-      case "pending":
-        return <Clock className="h-4 w-4 text-warning" />;
-      case "overdue":
-        return <AlertCircle className="h-4 w-4 text-error" />;
-      case "draft":
-        return <FileText className="h-4 w-4 text-muted-foreground" />;
-      case "cancelled":
-        return <XCircle className="h-4 w-4 text-error" />;
-      default:
-        return <FileText className="h-4 w-4 text-muted-foreground" />;
-    }
-  };
 
   // Dropzone component
   function SignatureDropzone({ label, file, setFile }: { label: string, file: File | null, setFile: (f: File | null) => void }) {
