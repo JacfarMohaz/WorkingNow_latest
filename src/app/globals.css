@@ -1,0 +1,412 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Vuexy Theme Design System */
+:root {
+  /* Vuexy Primary Colors */
+  --primary: #7367F0;
+  --primary-light: #8A7FF3;
+  --primary-dark: #5E50EE;
+  --primary-foreground: #ffffff;
+  
+  /* Vuexy Secondary Colors */
+  --secondary: #82868B;
+  --secondary-light: #A3A7AC;
+  --secondary-dark: #6E7174;
+  --secondary-foreground: #ffffff;
+  
+  /* Vuexy Success Colors */
+  --success: #28C76F;
+  --success-light: #48DA89;
+  --success-dark: #24B263;
+  
+  /* Vuexy Warning Colors */
+  --warning: #FF9F43;
+  --warning-light: #FFB976;
+  --warning-dark: #E67E22;
+  
+  /* Vuexy Error Colors */
+  --error: #EA5455;
+  --error-light: #F08182;
+  --error-dark: #D63031;
+  
+  /* Vuexy Info Colors */
+  --info: #00CFE8;
+  --info-light: #1FD5EB;
+  --info-dark: #00B5C7;
+  
+  /* Vuexy Background Colors */
+  --background: #F8F8F8;
+  --foreground: #625F6E;
+  --card: #ffffff;
+  --card-foreground: #625F6E;
+  --popover: #ffffff;
+  --popover-foreground: #625F6E;
+  
+  /* Vuexy Muted Colors */
+  --muted: #F8F8F8;
+  --muted-foreground: #B9B9C3;
+  --accent: #F8F8F8;
+  --accent-foreground: #625F6E;
+  
+  /* Vuexy Border Colors */
+  --border: #E7E7E7;
+  --input: #E7E7E7;
+  --ring: #7367F0;
+  
+  /* Vuexy Destructive */
+  --destructive: #EA5455;
+  --destructive-foreground: #ffffff;
+  
+  /* Vuexy Typography */
+  --font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  
+  /* Vuexy Spacing */
+  --radius: 0.5rem;
+  --radius-sm: 0.375rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  
+  /* Vuexy Shadows */
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.dark {
+  /* Vuexy Dark Theme Colors */
+  --background: #283046;
+  --foreground: #D0D2D6;
+  --card: #2F3349;
+  --card-foreground: #D0D2D6;
+  --popover: #2F3349;
+  --popover-foreground: #D0D2D6;
+  
+  /* Dark Muted Colors */
+  --muted: #3B4253;
+  --muted-foreground: #676D7D;
+  --accent: #3B4253;
+  --accent-foreground: #D0D2D6;
+  
+  /* Dark Border Colors */
+  --border: #3B4253;
+  --input: #3B4253;
+  
+  /* Keep primary colors consistent */
+  --primary: #7367F0;
+  --primary-light: #8A7FF3;
+  --primary-dark: #5E50EE;
+  --primary-foreground: #ffffff;
+  
+  /* Dark Secondary */
+  --secondary: #82868B;
+  --secondary-light: #A3A7AC;
+  --secondary-dark: #6E7174;
+  --secondary-foreground: #ffffff;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-medium;
+    font-family: var(--font-family);
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Vuexy Typography Scale */
+  h1, .h1 {
+    @apply text-3xl font-bold leading-tight text-foreground;
+  }
+  
+  h2, .h2 {
+    @apply text-2xl font-semibold leading-tight text-foreground;
+  }
+  
+  h3, .h3 {
+    @apply text-xl font-semibold leading-tight text-foreground;
+  }
+  
+  h4, .h4 {
+    @apply text-lg font-medium leading-tight text-foreground;
+  }
+  
+  h5, .h5 {
+    @apply text-base font-medium leading-tight text-foreground;
+  }
+  
+  h6, .h6 {
+    @apply text-sm font-medium leading-tight text-foreground;
+  }
+  
+  /* Adkee text-muted-foreground */
+  .text-muted-foreground {
+    color: rgb(120, 120, 140); /* xoogaa mugdi ah */
+    font-weight: 500;
+  }
+  
+  /* Vuexy Scrollbar Styling */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--muted-foreground);
+    border-radius: 3px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary);
+  }
+}
+
+@layer components {
+  /* Vuexy Card Styles */
+  .vuexy-card {
+    @apply bg-card border border-border rounded-lg shadow-sm;
+  }
+  
+  .vuexy-card-header {
+    @apply px-6 py-4 border-b border-border font-semibold text-foreground;
+  }
+  
+  .vuexy-card-content {
+    @apply px-6 py-4 font-medium text-foreground;
+  }
+  
+  .vuexy-card-footer {
+    @apply px-6 py-4 border-t border-border font-medium text-foreground;
+  }
+  
+  /* Vuexy Button Base */
+  .vuexy-btn {
+    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all duration-200 disabled:pointer-events-none disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+  
+  /* Vuexy Form Styles */
+  .vuexy-input {
+    @apply flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  
+  .vuexy-label {
+    @apply text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70;
+  }
+  
+  /* Vuexy Table Styles */
+  .vuexy-table {
+    @apply w-full caption-bottom text-sm border-collapse font-medium text-foreground;
+  }
+  
+  .vuexy-table-header {
+    @apply bg-muted/30 border-b border-border font-semibold text-foreground;
+  }
+  
+  .vuexy-table-row {
+    @apply border-b border-border transition-colors hover:bg-muted/30 data-[state=selected]:bg-muted/50 font-medium text-foreground;
+  }
+  
+  .vuexy-table-cell {
+    @apply p-4 align-middle font-medium text-foreground;
+  }
+  
+  .vuexy-table-head {
+    @apply h-12 px-4 text-left align-middle font-semibold text-foreground text-sm;
+  }
+  
+  /* Vuexy Table Container */
+  .vuexy-table-container {
+    @apply relative w-full overflow-auto rounded-lg border border-border bg-card;
+  }
+  
+  /* Vuexy Table Responsive */
+  .vuexy-table-responsive {
+    @apply overflow-x-auto;
+  }
+  
+  /* Vuexy Table Striped */
+  .vuexy-table-striped tbody tr:nth-child(even) {
+    @apply bg-muted/20;
+  }
+  
+  /* Vuexy Table Compact */
+  .vuexy-table-compact .vuexy-table-cell {
+    @apply p-2;
+  }
+  
+  .vuexy-table-compact .vuexy-table-head {
+    @apply h-10 px-2;
+  }
+  
+  /* Vuexy Table Actions */
+  .vuexy-table-actions {
+    @apply flex items-center gap-1;
+  }
+  
+  .vuexy-table-action-btn {
+    @apply h-8 w-8 p-0 rounded-md hover:bg-muted transition-colors;
+  }
+  
+  /* Vuexy Table Status Badge */
+  .vuexy-table-status {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium;
+  }
+  
+  .vuexy-table-status-success {
+    @apply bg-success/10 text-success border border-success/20;
+  }
+  
+  .vuexy-table-status-warning {
+    @apply bg-warning/10 text-warning border border-warning/20;
+  }
+  
+  .vuexy-table-status-error {
+    @apply bg-error/10 text-error border border-error/20;
+  }
+  
+  .vuexy-table-status-info {
+    @apply bg-info/10 text-info border border-info/20;
+  }
+  
+  /* Vuexy Table Empty State */
+  .vuexy-table-empty {
+    @apply text-center py-12 text-muted-foreground;
+  }
+  
+  .vuexy-table-empty-icon {
+    @apply mx-auto h-12 w-12 text-muted-foreground mb-4;
+    opacity: 0.5;
+  }
+  
+  /* Vuexy Table Loading */
+  .vuexy-table-loading {
+    @apply animate-pulse;
+  }
+  
+  .vuexy-table-loading .vuexy-table-cell {
+    @apply bg-muted/50;
+  }
+  
+  /* Vuexy Table Pagination */
+  .vuexy-table-pagination {
+    @apply flex items-center justify-between px-4 py-3 border-t border-border bg-muted/20;
+  }
+  
+  .vuexy-table-pagination-info {
+    @apply text-sm text-muted-foreground;
+  }
+  
+  .vuexy-table-pagination-controls {
+    @apply flex items-center gap-2;
+  }
+  
+  .vuexy-table-pagination-btn {
+    @apply h-8 w-8 p-0 rounded-md border border-border bg-background hover:bg-muted transition-colors disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  
+  /* Vuexy Table Search and Filters */
+  .vuexy-table-search {
+    @apply relative;
+  }
+  
+  .vuexy-table-search-input {
+    @apply pl-9 pr-4 py-2 text-sm bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary;
+  }
+  
+  .vuexy-table-search-icon {
+    @apply absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground;
+  }
+  
+  .vuexy-table-filters {
+    @apply flex items-center gap-4;
+  }
+  
+  .vuexy-table-filter {
+    @apply min-w-[120px];
+  }
+}
+
+@layer utilities {
+  /* Vuexy Spacing Utilities */
+  .vuexy-p-6 {
+    padding: 1.5rem;
+  }
+  
+  .vuexy-px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  
+  .vuexy-py-4 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  
+  /* Vuexy Text Utilities */
+  .vuexy-text-primary {
+    color: var(--primary);
+  }
+  
+  .vuexy-text-success {
+    color: var(--success);
+  }
+  
+  .vuexy-text-warning {
+    color: var(--warning);
+  }
+  
+  .vuexy-text-error {
+    color: var(--error);
+  }
+  
+  .vuexy-text-info {
+    color: var(--info);
+  }
+  
+  /* Landing Page Animations */
+  @keyframes blob {
+    0% {
+      transform: translate(0px, 0px) scale(1);
+    }
+    33% {
+      transform: translate(30px, -50px) scale(1.1);
+    }
+    66% {
+      transform: translate(-20px, 20px) scale(0.9);
+    }
+    100% {
+      transform: translate(0px, 0px) scale(1);
+    }
+  }
+  
+  .animate-blob {
+    animation: blob 7s infinite;
+  }
+  
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+  
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+}
