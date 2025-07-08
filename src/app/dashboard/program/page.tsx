@@ -12,10 +12,8 @@ import {
   Calendar,
   Plus,
   Eye,
-  Download as DownloadIcon,
   Upload as UploadIcon,
   CheckCircle,
-  Clock,
   TrendingUp,
   Activity,
 } from "lucide-react";

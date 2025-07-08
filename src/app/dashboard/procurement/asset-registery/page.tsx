@@ -3,10 +3,10 @@ import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Eye, Edit, Trash2, FileText, Download, Upload, CheckCircle, AlertCircle, Package } from "lucide-react";
+import { Eye, Edit, Trash2, Download, CheckCircle, AlertCircle, Package } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Label } from "@/components/ui/label";
 
 // Mock data for asset registry records
 const mockAssets = [
@@ -53,7 +53,6 @@ const mockAssets = [
 
 export default function AssetRegistryPage() {
   const [assets, setAssets] = useState(mockAssets);
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [uploadStatus, setUploadStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
@@ -92,7 +91,6 @@ export default function AssetRegistryPage() {
           },
           ...assets,
         ]);
-        setIsDialogOpen(false);
         setUploadedFile(null);
         setUploadStatus('idle');
       }, 2000);

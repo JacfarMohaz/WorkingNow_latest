@@ -21,7 +21,11 @@ import {
   Download,
   Send,
   Printer,
+  Upload,
+  CheckCircle,
+  AlertCircle,
 } from "lucide-react";
+import Image from "next/image";
 
 // Mock data for payment vouchers (matching modal fields)
 const mockVouchers = [
@@ -92,7 +96,7 @@ export default function InvoiceManagementPage() {
   const [approvedSignature, setApprovedSignature] = useState<File | null>(null);
 
   // Use mockVouchers for table
-  const [vouchers] = useState(mockVouchers);
+  const [invoices] = useState(mockVouchers);
 
   // Filter invoices based on search and filters
   const filteredInvoices = mockVouchers.filter((invoice) => {
@@ -102,9 +106,8 @@ export default function InvoiceManagementPage() {
       invoice.being.toLowerCase().includes(searchTerm.toLowerCase());
     
     const matchesStatus = statusFilter === "all" || invoice.status === statusFilter;
-    const matchesType = typeFilter === "all" || invoice.type === typeFilter;
     
-    return matchesSearch && matchesStatus && matchesType;
+    return matchesSearch && matchesStatus;
   });
 
   // Dropzone component
@@ -132,11 +135,13 @@ export default function InvoiceManagementPage() {
         >
           {file ? (
             <div className="flex flex-col items-center gap-2">
-              {file.type.startsWith('image') ? (
-                <img src={URL.createObjectURL(file)} alt="Signature preview" className="h-16 object-contain rounded border" />
-              ) : (
-                <span className="text-sm font-medium">{file.name}</span>
-              )}
+              <Image 
+                src={URL.createObjectURL(file)} 
+                alt="Signature preview" 
+                width={64}
+                height={64}
+                className="h-16 object-contain rounded border" 
+              />
               <Button type="button" size="sm" variant="ghost" onClick={handleRemove}>Remove</Button>
             </div>
           ) : (
@@ -260,7 +265,13 @@ export default function InvoiceManagementPage() {
                 {/* HEADER */}
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center border-b px-6 pt-6 pb-2 gap-4">
                   <div className="flex items-center gap-4">
-                    <img src={mockNgo.logoUrl} alt="NGO Logo" className="h-12 w-12 rounded bg-muted object-contain" />
+                    <Image 
+                      src={mockNgo.logoUrl} 
+                      alt="NGO Logo" 
+                      width={48}
+                      height={48}
+                      className="h-12 w-12 rounded bg-muted object-contain" 
+                    />
                     <div>
                       <h2 className="text-xl font-bold text-foreground leading-tight">{mockNgo.name}</h2>
                       <div className="text-xs text-muted-foreground">{mockNgo.address}</div>
@@ -441,7 +452,7 @@ export default function InvoiceManagementPage() {
             <div>
               <CardTitle className="flex items-center gap-2">
                 <FileText className="h-5 w-5" />
-                Payment Voucher ({vouchers.length})
+                Payment Voucher ({invoices.length})
               </CardTitle>
               <CardDescription>
                 All payment vouchers and their current status
@@ -469,7 +480,7 @@ export default function InvoiceManagementPage() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {vouchers.map((voucher) => (
+                {invoices.map((voucher) => (
                   <TableRow key={voucher.id}>
                     <TableCell>{voucher.serialNumber}</TableCell>
                     <TableCell>{voucher.paidTo}</TableCell>
@@ -509,7 +520,7 @@ export default function InvoiceManagementPage() {
               </TableBody>
             </Table>
           </div>
-          {vouchers.length === 0 && (
+          {invoices.length === 0 && (
             <div className="vuexy-table-empty">
               <FileText className="vuexy-table-empty-icon" />
               <p>No payment vouchers found.</p>

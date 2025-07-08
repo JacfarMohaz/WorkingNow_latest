@@ -9,15 +9,13 @@ import {
   Users, 
   Shield, 
   Zap, 
-  BarChart3, 
   FileText, 
   DollarSign,
   Star,
-  Globe,
-  Lock,
   TrendingUp
 } from "lucide-react";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export default function Home() {
   const [isDark, setIsDark] = useState(false);
@@ -162,7 +160,13 @@ export default function Home() {
             <Card className="border-0 shadow-xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
               <CardHeader>
                 <div className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-lg flex items-center justify-center mb-4">
-                  <Globe className="h-6 w-6 text-white" />
+                  <Image 
+                    src="/globe.svg" 
+                    alt="Global Access" 
+                    width={48}
+                    height={48}
+                    className="h-12 w-12 text-primary" 
+                  />
                 </div>
                 <CardTitle className="text-xl">Global Access</CardTitle>
                 <CardDescription>
@@ -368,7 +372,7 @@ export default function Home() {
             Ready to Transform Your NGO?
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
-            Join hundreds of NGOs already using WorkingNow to streamline their operations and make a bigger impact.
+            Join thousands of NGOs already using WorkingNow to streamline their operations and make a bigger impact.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-lg px-8 py-6 h-auto">

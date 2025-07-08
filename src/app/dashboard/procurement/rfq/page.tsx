@@ -22,14 +22,11 @@ import {
   CheckCircle,
   AlertCircle,
   Minus,
-  Upload,
-  PenTool,
-  Stamp,
 } from "lucide-react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Textarea } from "@/components/ui/textarea";
-import { SignatureUpload } from "@/components/ui/signature-upload";
 import { SignatureSection, SingleSignatureSection } from "@/components/ui/signature-section";
+import Image from "next/image";
 
 type RFQ = {
   id: string;
@@ -250,7 +247,13 @@ export default function RFQPage() {
               {/* NGO Branding */}
               <div className="flex flex-col items-center gap-2 mb-4">
                 {mockNGO.logo && (
-                  <img src={mockNGO.logo} alt="NGO Logo" className="h-12 w-12 object-contain mb-1" />
+                  <Image 
+                    src={mockNGO.logo} 
+                    alt="NGO Logo" 
+                    width={48}
+                    height={48}
+                    className="h-12 w-12 object-contain mb-1" 
+                  />
                 )}
                 <div className="text-lg font-semibold text-center">{mockNGO.name}</div>
                 <div className="text-xs text-muted-foreground text-center">{mockNGO.address}</div>

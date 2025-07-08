@@ -6,7 +6,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Eye, Edit, Trash2, FileText, Download } from "lucide-react";
-import { Alert, AlertDescription } from "@/components/ui/alert";
 
 // Mock data for reconciliation records
 const mockReconciliations = [
@@ -33,7 +32,7 @@ const mockReconciliations = [
 ];
 
 export default function BankReconciliationPage() {
-  const [reconciliations, setReconciliations] = useState(mockReconciliations);
+  const [reconciliations] = useState(mockReconciliations);
 
   const handleDownloadTemplate = () => {
     // Create a link element to trigger download

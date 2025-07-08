@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { SignatureUpload } from "@/components/ui/signature-upload";
@@ -17,7 +17,6 @@ interface SignatureSectionProps {
   people: SignaturePerson[];
   onPersonUpdate: (id: string, field: 'name' | 'signature', value: string | File | null) => void;
   className?: string;
-  maxPeople?: number;
 }
 
 export function SignatureSection({
@@ -25,7 +24,6 @@ export function SignatureSection({
   people,
   onPersonUpdate,
   className,
-  maxPeople = 3,
 }: SignatureSectionProps) {
   return (
     <div className={cn("space-y-4", className)}>

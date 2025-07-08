@@ -1,9 +1,8 @@
 "use client";
 import { useState } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -13,13 +12,10 @@ import {
   Eye,
   Edit,
   Trash2,
-  CheckSquare,
-  Clock,
-  User,
-  Calendar,
-  AlertCircle,
   CheckCircle,
   Circle,
+  User,
+  Calendar,
 } from "lucide-react";
 
 type Task = {
@@ -103,12 +99,6 @@ const mockTasks: Task[] = [
   },
 ];
 
-const statusColors = {
-  todo: "bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300",
-  "in-progress": "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300",
-  done: "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300",
-};
-
 const priorityColors = {
   high: "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300",
   medium: "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300",
@@ -143,12 +133,6 @@ export default function TasksPage() {
 
   const handleDeleteTask = (taskId: string) => {
     setTasks(tasks.filter(task => task.id !== taskId));
-  };
-
-  const handleStatusChange = (taskId: string, newStatus: Task["status"]) => {
-    setTasks(tasks.map(task => 
-      task.id === taskId ? { ...task, status: newStatus } : task
-    ));
   };
 
   const columns = [

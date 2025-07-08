@@ -3,6 +3,12 @@ import { useState, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Dialog, DialogTrigger, DialogContent, DialogClose } from "@/components/ui/dialog";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Label } from "@/components/ui/label";
+import { Minus, Plus, Package, FileText, Calendar, User, CheckCircle, AlertCircle, Eye, Edit, Trash2 } from "lucide-react";
+import { Textarea } from "@/components/ui/textarea";
+import { SignatureUpload } from "@/components/ui/signature-upload";
 
 // Mock data for GRN table
 const mockGRNs = [
@@ -36,7 +42,6 @@ const ngoInfo = {
 
 export default function GRNPage() {
   const [open, setOpen] = useState(false);
-  const [autoGRNNo, setAutoGRNNo] = useState("");
   const [autoRefNo, setAutoRefNo] = useState("");
   const [receivedItems, setReceivedItems] = useState([
     { id: "1", description: "", size: "", quantity: "", specifications: "" },
@@ -60,7 +65,6 @@ export default function GRNPage() {
       const now = new Date();
       const yyyymmdd = now.getFullYear().toString() + (now.getMonth()+1).toString().padStart(2, '0') + now.getDate().toString().padStart(2, '0');
       const rand = Math.floor(100 + Math.random() * 900); // 3 digit random
-      setAutoGRNNo(`GRN-${yyyymmdd}-${rand}`);
       setAutoRefNo(`REF-${yyyymmdd}-${rand}`);
     }
   }, [open]);
@@ -87,14 +91,8 @@ export default function GRNPage() {
   };
 
   // Handlers for signature and stamp updates
-  const handleReceivedByUpdate = (field: 'name' | 'signature', value: string | File | null) => {
-    setReceivedBy({ ...receivedBy, [field]: value });
-  };
   const handleVerifiedByUpdate = (field: 'name' | 'signature', value: string | File | null) => {
     setVerifiedBy({ ...verifiedBy, [field]: value });
-  };
-  const handleReceivedByUpdateWrapper = (field: string, value: string | File | null) => {
-    if (field === 'name' || field === 'signature') handleReceivedByUpdate(field, value);
   };
   const handleVerifiedByUpdateWrapper = (field: string, value: string | File | null) => {
     if (field === 'name' || field === 'signature') handleVerifiedByUpdate(field, value);

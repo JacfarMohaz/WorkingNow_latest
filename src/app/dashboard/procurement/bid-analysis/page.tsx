@@ -1,14 +1,11 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogFooter, DialogClose } from "@/components/ui/dialog";
-import { Textarea } from "@/components/ui/textarea";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Plus, FileText, Calendar, User, DollarSign, Eye, Edit, Trash2, CheckCircle, AlertCircle, Download } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { CheckCircle, AlertCircle, Eye, Edit, Trash2 } from "lucide-react";
 
 // Mock data for bid analysis table
 const mockBids = [
@@ -30,65 +27,10 @@ const mockBids = [
   },
 ];
 
-// Mock NGO/company info
-const ngoInfo = {
-  name: "WorkingNow Foundation",
-  address: "123 NGO Street, Mogadishu",
-  email: "info@workingnow.org",
-  phone: "+252 61 2345678",
-};
-
 export default function BidAnalysisPage() {
-  // State for bid items and committee
-  const [bidItems, setBidItems] = useState([
-    { id: "1", description: "", suppliers: [ { qty: "", unitPrice: "", total: "" }, { qty: "", unitPrice: "", total: "" }, { qty: "", unitPrice: "", total: "" } ] },
-    { id: "2", description: "", suppliers: [ { qty: "", unitPrice: "", total: "" }, { qty: "", unitPrice: "", total: "" }, { qty: "", unitPrice: "", total: "" } ] },
-    { id: "3", description: "", suppliers: [ { qty: "", unitPrice: "", total: "" }, { qty: "", unitPrice: "", total: "" }, { qty: "", unitPrice: "", total: "" } ] },
-  ]);
-  const [supplierNames, setSupplierNames] = useState(["", "", ""]);
-  const [committeeReason, setCommitteeReason] = useState("");
-  const [committee, setCommittee] = useState([
-    { name: "", title: "", date: "", signature: "" },
-    { name: "", title: "", date: "", signature: "" },
-    { name: "", title: "", date: "", signature: "" },
-  ]);
-  const [open, setOpen] = useState(false);
-  const [autoRefNo, setAutoRefNo] = useState("");
+  // State for uploaded file
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [uploadStatus, setUploadStatus] = useState<'idle' | 'success' | 'error'>('idle');
-
-  useEffect(() => {
-    if (open) {
-      // Generate Ref No: BID-YYYYMMDD-XXX
-      const now = new Date();
-      const yyyymmdd = now.getFullYear().toString() + (now.getMonth()+1).toString().padStart(2, '0') + now.getDate().toString().padStart(2, '0');
-      const rand = Math.floor(100 + Math.random() * 900); // 3 digit random
-      setAutoRefNo(`BID-${yyyymmdd}-${rand}`);
-    }
-  }, [open]);
-
-  // Handlers for bid items
-  const updateBidItem = (itemId: string, supplierIdx: number, field: string, value: string) => {
-    setBidItems(bidItems.map(item => {
-      if (item.id === itemId) {
-        const updatedSuppliers = item.suppliers.map((sup, idx) => {
-          if (idx === supplierIdx) {
-            const updated = { ...sup, [field]: value };
-            if ((field === 'qty' || field === 'unitPrice') && updated.qty && updated.unitPrice) {
-              const total = parseFloat(updated.qty) * parseFloat(updated.unitPrice);
-              updated.total = isNaN(total) ? "" : total.toFixed(2);
-            } else if (field === 'qty' || field === 'unitPrice') {
-              updated.total = "";
-            }
-            return updated;
-          }
-          return sup;
-        });
-        return { ...item, suppliers: updatedSuppliers };
-      }
-      return item;
-    }));
-  };
 
   const handleDownloadTemplate = () => {
     const link = document.createElement('a');
@@ -125,7 +67,6 @@ export default function BidAnalysisPage() {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <FileText className="h-5 w-5" />
             Create New Bid Analysis
           </CardTitle>
           <CardDescription>
@@ -151,7 +92,6 @@ export default function BidAnalysisPage() {
               className="flex items-center gap-2"
               variant="outline"
             >
-              <Download className="h-4 w-4" />
               📥 Download Template
             </Button>
           </div>
@@ -186,7 +126,6 @@ export default function BidAnalysisPage() {
               {/* Upload Status */}
               {uploadStatus === 'success' && (
                 <Alert className="border-green-200 bg-green-50 dark:border-green-800 dark:bg-green-950">
-                  <CheckCircle className="h-4 w-4 text-green-600" />
                   <AlertDescription className="text-green-800 dark:text-green-200">
                     File uploaded successfully!
                   </AlertDescription>
@@ -195,7 +134,6 @@ export default function BidAnalysisPage() {
 
               {uploadStatus === 'error' && (
                 <Alert className="border-red-200 bg-red-50 dark:border-red-800 dark:bg-red-950">
-                  <AlertCircle className="h-4 w-4 text-red-600" />
                   <AlertDescription className="text-red-800 dark:text-red-200">
                     Please upload a valid document file
                   </AlertDescription>
@@ -231,7 +169,6 @@ export default function BidAnalysisPage() {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <FileText className="h-5 w-5" />
             All Bid Analyses ({mockBids.length})
           </CardTitle>
           <CardDescription>

@@ -3,9 +3,8 @@ import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
-import { Upload, Download, Eye, Edit, Trash2, FileText, Filter, Search } from "lucide-react";
+import { Upload, Download, Eye, Edit, Trash2, FileText } from "lucide-react";
 
 const mockSuppliers = [
   {

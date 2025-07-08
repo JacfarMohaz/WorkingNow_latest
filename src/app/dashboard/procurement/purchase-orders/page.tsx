@@ -5,12 +5,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogFooter, DialogClose } from "@/components/ui/dialog";
+import { Dialog, DialogTrigger, DialogContent, DialogClose } from "@/components/ui/dialog";
 import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from "@/components/ui/table";
 import { Textarea } from "@/components/ui/textarea";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Plus, Minus, ShoppingCart, FileText, Calendar, User, Building, DollarSign, Eye, Edit, Trash2, Search, Filter } from "lucide-react";
-import { SingleSignatureSection } from "@/components/ui/signature-section";
+import { Plus, Minus, ShoppingCart, FileText, Eye, Edit, Trash2, Search, Filter, Building } from "lucide-react";
 import { SignatureUpload } from "@/components/ui/signature-upload";
 
 // Mock data for purchase orders table
@@ -64,19 +63,6 @@ const ngoInfo = {
   email: "info@workingnow.org",
   phone: "+252 61 2345678",
 };
-
-// Type for SingleSignatureSection onUpdate when showStamp is false
-type SignatureUpdateField = 'name' | 'signature';
-
-// Helper function to summarize items
-function summarizeItems(items: { description: string; quantity: number | string }[]): string {
-  if (!items || items.length === 0) return "-";
-  const summary = items.slice(0, 2).map((item: { description: string; quantity: number | string }) => `${item.description} (x${item.quantity})`).join(", ");
-  if (items.length > 2) {
-    return `${summary}, ... (+${items.length - 2} more)`;
-  }
-  return summary;
-}
 
 export default function PurchaseOrdersPage() {
   const [open, setOpen] = useState(false);

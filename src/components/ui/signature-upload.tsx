@@ -5,6 +5,7 @@ import { Upload, X, FileImage, PenTool } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 interface SignatureUploadProps {
   label?: string;
@@ -172,10 +173,12 @@ export function SignatureUpload({
               Preview:
             </Label>
             <div className="relative inline-block">
-              <img
-                src={previewUrl}
-                alt="Signature preview"
-                className="max-w-full h-auto max-h-32 rounded border bg-background object-contain"
+              <Image 
+                src={previewUrl} 
+                alt="Signature preview" 
+                width={200}
+                height={100}
+                className="max-w-full h-auto rounded border" 
               />
               {!disabled && (
                 <Button

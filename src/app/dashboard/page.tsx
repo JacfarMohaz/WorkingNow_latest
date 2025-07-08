@@ -3,7 +3,7 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, BarChart, Bar, PieChart, Pie, Cell } from "recharts";
-import { TrendingUp, Users, DollarSign, Activity, ArrowUpRight, ArrowDownRight, Eye, Download, Plus } from "lucide-react";
+import { TrendingUp, Users, DollarSign, Activity, Eye, Download, Plus } from "lucide-react";
 
 const areaData = [
   { month: "Jan", Projects: 8, Tasks: 120 },
@@ -35,7 +35,7 @@ export default function DashboardPage() {
         <div className="flex items-center justify-between">
           <div>
         <h1 className="text-3xl font-bold tracking-tight text-foreground">Dashboard</h1>
-        <p className="text-muted-foreground">Welcome back! Here's what's happening with your projects today.</p>
+        <p className="text-muted-foreground">Welcome back! Here&apos;s what&apos;s happening with your NGO today.</p>
           </div>
           <Button className="flex items-center gap-2" onClick={() => window.location.href = '/dashboard/project'}>
             <Plus className="h-4 w-4" />

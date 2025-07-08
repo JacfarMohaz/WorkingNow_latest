@@ -16,7 +16,6 @@ import {
   Trash2,
   Filter,
   Download,
-  MoreHorizontal,
   Edit,
   Eye,
   Mail,

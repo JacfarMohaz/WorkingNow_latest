@@ -5,7 +5,6 @@ import { Avatar } from "@/components/ui/avatar";
 import ThemeToggle from "@/components/ThemeToggle";
 import { usePathname } from "next/navigation";
 import {
-  ChevronDown,
   ChevronRight,
   Users,
   LayoutDashboard,
@@ -21,6 +20,7 @@ import {
   Bell,
   Search,
 } from "lucide-react";
+import Image from "next/image";
 
 const navLinks = [
   { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
@@ -327,7 +327,13 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
             
             <div className="flex items-center gap-3">
               <Avatar className="h-8 w-8">
-                <img src="https://ui-avatars.com/api/?name=Admin&background=7367F0&color=fff" alt="User" className="rounded-full" />
+                <Image 
+                  src="https://ui-avatars.com/api/?name=Admin&background=7367F0&color=fff" 
+                  alt="User" 
+                  width={32}
+                  height={32}
+                  className="rounded-full" 
+                />
               </Avatar>
               <div className="hidden md:block">
                 <p className="text-sm font-medium text-foreground">Admin User</p>
