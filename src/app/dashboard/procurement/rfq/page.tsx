@@ -409,7 +409,6 @@ export default function RFQPage() {
                     title="Supplier Signature & Stamp"
                     name={supplierSignature.name}
                     signature={supplierSignature.signature}
-                    stamp={supplierSignature.stamp}
                     showStamp={true}
                     onUpdate={handleSupplierSignatureUpdate}
                   />

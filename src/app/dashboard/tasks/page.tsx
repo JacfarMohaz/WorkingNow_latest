@@ -16,6 +16,7 @@ import {
   Circle,
   User,
   Calendar,
+  Clock,
 } from "lucide-react";
 
 type Task = {

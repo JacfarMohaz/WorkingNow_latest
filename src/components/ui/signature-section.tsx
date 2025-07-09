@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { SignatureUpload } from "@/components/ui/signature-upload";
@@ -56,7 +56,6 @@ interface SingleSignatureSectionProps {
   onUpdate: (field: 'name' | 'signature' | 'stamp', value: string) => void;
   className?: string;
   showStamp?: boolean;
-  stamp?: string;
 }
 
 export function SingleSignatureSection({
@@ -66,7 +65,6 @@ export function SingleSignatureSection({
   onUpdate,
   className,
   showStamp = false,
-  stamp = "",
 }: SingleSignatureSectionProps) {
   return (
     <div className={cn("space-y-4", className)}>

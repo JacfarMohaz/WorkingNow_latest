@@ -196,7 +196,7 @@ export default function Home() {
             <div>
               <h3 className="text-2xl font-bold mb-4">Modern Dashboard</h3>
               <p className="text-gray-600 dark:text-gray-300 mb-6">
-                Get a bird's eye view of all your projects, finances, and team activities with our comprehensive dashboard.
+                Get a bird&apos;s eye view of all your projects, finances, and team activities with our comprehensive dashboard.
               </p>
               <ul className="space-y-3">
                 <li className="flex items-center">
@@ -253,7 +253,7 @@ export default function Home() {
               Simple, Transparent Pricing
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Choose the plan that fits your NGO's needs. All plans include our core features and 24/7 support.
+              Choose the plan that fits your NGO&apos;s needs. All plans include our core features and 24/7 support.
             </p>
           </div>
           
